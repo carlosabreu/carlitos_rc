@@ -18,14 +18,14 @@ function git_nome_branch () {
 }
 PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ "
 
-######################################### Sgrep ################################################
+######################################### split_grep ################################################
 # Find words inside files and spit the result in files of a number of lines.
-# Example: sgrep "git" 50.
+# Example: split_grep "git" 50.
 # Parameters:
 # 1) The word to look for
 # 2) The maximum of lines on the result files.
 
-function sgrep () {
+function split_grep () {
     tempFile=xptoTmp.txt
     folder=~/Downloads/grepResult
     rm -rf $folder
@@ -39,6 +39,6 @@ function sgrep () {
 }
 
 ########################## Kills any process whose name contains a text #############################
-function killByName() {
+function kill_by_name() {
     ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9
 }

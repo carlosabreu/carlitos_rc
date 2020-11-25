@@ -77,7 +77,7 @@ Apresenta o nome da branch no terminal e deixa-o colorido. Fica assim:
 Sim eu sei, esse é o mais controverso de todos, pois cada desenvolvedor gosta de ter o terminal do seu jeito.
 Como eu disse no início, faça sua própria personalização.
 
-### **Sgrep**
+### **split_grep**
 O comando grep é um excelente comando para realizar buscas em pastas e em arquivos. Exemplo de utilização:
 
     grep -Inri git .
@@ -85,11 +85,11 @@ O comando grep é um excelente comando para realizar buscas em pastas e em arqui
 
 O primeiro mostra o resultado no terminal, enquanto o segundo coloca este resultado em um arquivo chamado arquivo.txt
 
-No entanto, já tive situações em que o arquivo tinha tantas linhas que os editores de texto tinham dificuldades em abrí-lo. Para isso criei o sgrep. Que nada mais faz do que dividir a resposta em arquivos respeitando o número máximo de linhas por arquivo.
+No entanto, já tive situações em que o arquivo tinha tantas linhas que os editores de texto tinham dificuldades em abrí-lo. Para isso criei o split_grep. Que nada mais faz do que dividir a resposta em arquivos respeitando o número máximo de linhas por arquivo.
 
-    sgrep "git" 50
+    split_grep "git" 50
 
-### **killByName**
+### **kill_by_name**
 
 O último script tem como motivação o sistema travando. Com quem nunca aconteceu de estar usando o app e algum programa travar? Neste cenário, quando algum terminal ainda funciona, é possível utilizá-lo para encerrar o programa que está travado. Por exemplo, se acontecer com a steam:
 
@@ -101,7 +101,7 @@ Isso irá listar todos os processos que tem steam no nome. Para encerrá-lo, dev
 
 Porém pode haver vários processos com o nome steam (no caso esta function irá encerrar todos). Para isso, utilize:
 
-    killByName steam
+    kill_by_name steam
 
 ## **Retirando o arquivo carlitos_rc:**
 
