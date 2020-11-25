@@ -1,8 +1,11 @@
 # **carlitos_rc**
-Arquivo para complementar o bashrc no linux. Sim, sim, eu entendo que isso é muito pessoal e que cada programador gosta de ter o seu. Por isso, sinta-se a vontade para testar e modificar como achar melhor.
+Arquivo para complementar o bashrc no linux e o zshrc no MAC. Sim, sim, eu entendo que isso é muito pessoal e que cada programador gosta de ter o seu. Por isso, sinta-se a vontade para testar e modificar como achar melhor.
 
 
-Estas configurações de shell estão sendo usadas no Ubuntu 20.04.1 LTS - 64 Bits com o bash
+Estas configurações de shell estão sendo usadas com: 
+
+    MacOs Catalina 10.15.7 com o zsh
+    Ubuntu 20.04.1 LTS 64 Bits com o bash
 
 Para saber qual o shell no seu computador, utilize o comando:
 
@@ -26,10 +29,10 @@ Para saber qual o shell no seu computador, utilize o comando:
     ```
 1) Adicione a chamada ao arquivo carlitos_rc no seu arquivo de configuração do shell:
     
-    <!-- MAC:
+    MAC:
     ```
-    echo "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
-    ``` -->
+    echo "\n\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
+    ``` 
 
     LINUX: 
     ```
@@ -39,10 +42,10 @@ Para saber qual o shell no seu computador, utilize o comando:
 
 1) Para utilizar essas configurações no terminal atual, utilize o comando:
     
-    <!-- MAC: 
+    MAC: 
     ```
     source ~/.zshrc
-    ``` -->
+    ```
     LINUX: 
     ```
     source ~/.bashrc
@@ -51,7 +54,7 @@ Para saber qual o shell no seu computador, utilize o comando:
 ## **Em que esse arquivo ajuda minha vida?**
 
 ### **Python server**
-Normalmente, o linux já vem com o python instalado. No python 3 para subir um servidor compartilhando determinados arquivos de uma pasta basta rodar um único comando:
+Normalmente, o mac e o linux já vem com o python instalado. No python 3 para subir um servidor compartilhando determinados arquivos de uma pasta basta rodar um único comando:
     
     python3 -m http.server
 
@@ -60,7 +63,7 @@ Depois disso você precisa rodar o comando ifconfig para encontrar o ip da sua m
     server
 
 ### **Ctrl S**
-Quem utiliza linux a algum tempo sabe como é bom o atalho ctrl + r. Com ele você consegue buscar comandos dentro do seu histórico, não um a um, mas digitando o comando que você quer. Exemplo:
+Quem utiliza mac ou linux há algum tempo sabe como é bom o atalho ctrl + r. Com ele você consegue buscar comandos dentro do seu histórico, não um a um, mas digitando o comando que você quer. Exemplo:
 
     Aperto: ctrl + r
     Digito: ser 

@@ -1,22 +1,40 @@
 ###################################### Python server ############################################
-function grep_ip(){
+function generic_grep_ip() {
+    	case "$OSTYPE" in
+	        darwin*) grep_ip 2 ;;
+	        linux*)  grep_ip 10 ;;
+	    esac
+}
+
+function grep_ip() {
 	i=1
-	ifconfig | grep broadcast | cut -d" " -f10 | while read -r line; do
+	ifconfig | grep broadcast | cut -d" " -f$1 | while read -r line; do
 	echo -e IP $i: "\033[0;36m http://$line:8000\033[0m"
 	let i=i+1;
 	done
 }
 
-alias server='grep_ip && python3 -m http.server'
+alias server='generic_grep_ip && python3 -m http.server'
 ################################## ctrl S to revert ctrl R #####################################
 [[ $- == *i* ]] && stty -ixon
 
-###################################### Git nome branch #########################################
-# Show Branches in Git
+# ###################################### Git nome branch #########################################
+# # Show Branches in Git
 function git_nome_branch () {
 	git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
 }
-PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ "
+
+function change_PS1(){
+    case "$OSTYPE" in
+        darwin*)    setopt PROMPT_SUBST
+                    autoload -U colors && colors
+                    PS1=$'%{$fg[green]%}%n@%m:%{$fg[blue]%}%~%{$fg[red]%}$(git_nome_branch)%{$fg[green]%}$ %{$reset_color%}%' ;;
+
+        linux*)     PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ " ;;
+    esac
+}
+
+change_PS1
 
 ######################################### split_grep ################################################
 # Find words inside files and spit the result in files of a number of lines.
@@ -40,5 +58,8 @@ function split_grep () {
 
 ########################## Kills any process whose name contains a text #############################
 function kill_by_name() {
-    ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9
+    case "$OSTYPE" in
+        darwin*) ps -ef | grep $1 | awk '{print $2}' | xargs kill -9 ;;
+        linux*)  ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9 ;;
+    esac
 }
