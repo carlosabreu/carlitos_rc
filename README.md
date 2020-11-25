@@ -13,21 +13,24 @@ Para saber qual o shell no seu computador, utilize o comando:
 
 ## **Como utilizar?**
 
-1) Abra um terminal e entre na pasta que você deseja ter o repositório.
+Passo 1: Copiar o arquivo.
 
-1) Clone o repositório:
-     ```
-    git clone https://github.com/carlosabreu/carlitos_rc.git
-    ```
-1) Entre na pasta: 
-    ```
-    cd carlitos_rc
-    ```
-1) Copie o arquivo src/.carlitos_rc para a sua pasta home (representada por ~): 
-    ```
-    cp src/.carlitos_rc ~  
-    ```
-1) Adicione a chamada ao arquivo carlitos_rc no seu arquivo de configuração do shell:
+Curl:
+
+    curl https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc --output ~/.carlitos_rc
+
+Wget:
+
+    wget -O ~/.carlitos_rc https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc
+
+Clonar o repositório e copiar o arquivo:
+
+    1) Abra um terminal e entre na pasta que você deseja ter o repositório.
+    2) Clone o repositório: git clone https://github.com/carlosabreu/carlitos_rc.git
+    3) Entre na pasta: cd carlitos_rc
+    4) Copie o arquivo src/.carlitos_rc para a sua pasta home (representada por ~): cp src/.carlitos_rc ~  
+
+Passo 2: Adicionar a chamada ao arquivo carlitos_rc no seu arquivo de configuração do shell:
     
     MAC:
     ```
@@ -38,18 +41,9 @@ Para saber qual o shell no seu computador, utilize o comando:
     ```
     echo -e "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.bashrc
     ```
-1) Pronto, quando abrir um novo terminal, este utilizará estas configurações.
 
-1) Para utilizar essas configurações no terminal atual, utilize o comando:
-    
-    MAC: 
-    ```
-    source ~/.zshrc
-    ```
-    LINUX: 
-    ```
-    source ~/.bashrc
-    ```
+
+Pronto, quando abrir um novo terminal ou uma nova aba, este utilizará estas novas configurações.
 
 ## **Em que esse arquivo ajuda minha vida?**
 
