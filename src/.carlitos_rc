@@ -1,0 +1,44 @@
+###################################### Python server ############################################
+function grep_ip(){
+	i=1
+	ifconfig | grep broadcast | cut -d" " -f10 | while read -r line; do
+	echo -e IP $i: "\033[0;36m http://$line:8000\033[0m"
+	let i=i+1;
+	done
+}
+
+alias server='grep_ip && python3 -m http.server'
+################################## ctrl S to revert ctrl R #####################################
+[[ $- == *i* ]] && stty -ixon
+
+###################################### Git nome branch #########################################
+# Show Branches in Git
+function git_nome_branch () {
+	git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
+}
+PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ "
+
+######################################### Sgrep ################################################
+# Find words inside files and spit the result in files of a number of lines.
+# Example: sgrep "git" 50.
+# Parameters:
+# 1) The word to look for
+# 2) The maximum of lines on the result files.
+
+function sgrep () {
+    tempFile=xptoTmp.txt
+    folder=~/Downloads/grepResult
+    rm -rf $folder
+    mkdir -p $folder
+    grep -Inri $1 > $folder/$tempFile .
+    cd $folder
+    split -l $2 $tempFile
+    rm -rf $tempFile
+    cd - > /dev/null
+    echo Grep finalizado com sucesso! Verifique a pasta $folder
+}
+
+########################## Kills any process whose name contains a text #############################
+function killByName() {
+    ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9
+}

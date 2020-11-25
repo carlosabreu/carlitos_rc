@@ -1,2 +1,117 @@
-# carlitos_rc
-Arquivo para complementar o bashrc no linux e o zshrc no mac que eu uso. Sim, sim, eu entendo que isso é muito pessoal e que cada programador gosta de ter o seu. Por isso, sinta-se a vontade para testar e modificar como achar melhor.
+# **carlitos_rc**
+Arquivo para complementar o bashrc no linux. Sim, sim, eu entendo que isso é muito pessoal e que cada programador gosta de ter o seu. Por isso, sinta-se a vontade para testar e modificar como achar melhor.
+
+
+Estas configurações de shell estão sendo usadas no Ubuntu 20.04.1 LTS - 64 Bits com o bash
+
+Para saber qual o shell no seu computador, utilize o comando:
+
+    echo $SHELL
+
+## **Como utilizar?**
+
+1) Abra um terminal e entre na pasta que você deseja ter o repositório.
+
+1) Clone o repositório:
+     ```
+    git clone https://github.com/carlosabreu/carlitos_rc.git
+    ```
+1) Entre na pasta: 
+    ```
+    cd carlitos_rc
+    ```
+1) Copie o arquivo src/.carlitos_rc para a sua pasta home (representada por ~): 
+    ```
+    cp src/.carlitos_rc ~  
+    ```
+1) Adicione a chamada ao arquivo carlitos_rc no seu arquivo de configuração do shell:
+    
+    <!-- MAC:
+    ```
+    echo "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
+    ``` -->
+
+    LINUX: 
+    ```
+    echo -e "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.bashrc
+    ```
+1) Pronto, quando abrir um novo terminal, este utilizará estas configurações.
+
+1) Para utilizar essas configurações no terminal atual, utilize o comando:
+    
+    <!-- MAC: 
+    ```
+    source ~/.zshrc
+    ``` -->
+    LINUX: 
+    ```
+    source ~/.bashrc
+    ```
+
+## **Em que esse arquivo ajuda minha vida?**
+
+### **Python server**
+Normalmente, o linux já vem com o python instalado. No python 3 para subir um servidor compartilhando determinados arquivos de uma pasta basta rodar um único comando:
+    
+    python3 -m http.server
+
+Depois disso você precisa rodar o comando ifconfig para encontrar o ip da sua máquina para passar para alguém em outra máquina acessar. Com este alias, você faz isso com apenas um comando:
+
+    server
+
+### **Ctrl S**
+Quem utiliza linux a algum tempo sabe como é bom o atalho ctrl + r. Com ele você consegue buscar comandos dentro do seu histórico, não um a um, mas digitando o comando que você quer. Exemplo:
+
+    Aperto: ctrl + r
+    Digito: ser 
+Há grande chances de que seja encontrado o comando server. Se não for a primeira opção, aperto ctrl + r novamente que ele vai pro próximo. Legal né?
+
+Mas e se durante essa busca, depois de apertar algumas vezes o ctrl + r eu tiver passado do comando que eu queria?
+Bem o carlitos_rc habilita o ctrl + s para que você possa voltar. 
+
+### **Nome da branch no git**
+Apresenta o nome da branch no terminal e deixa-o colorido. Fica assim:
+
+![](./resources/git_nome_branch.png)
+
+Sim eu sei, esse é o mais controverso de todos, pois cada desenvolvedor gosta de ter o terminal do seu jeito.
+Como eu disse no início, faça sua própria personalização.
+
+### **Sgrep**
+O comando grep é um excelente comando para realizar buscas em pastas e em arquivos. Exemplo de utilização:
+
+    grep -Inri git .
+    grep -Inri git . > arquivo.txt
+
+O primeiro mostra o resultado no terminal, enquanto o segundo coloca este resultado em um arquivo chamado arquivo.txt
+
+No entanto, já tive situações em que o arquivo tinha tantas linhas que os editores de texto tinham dificuldades em abrí-lo. Para isso criei o sgrep. Que nada mais faz do que dividir a resposta em arquivos respeitando o número máximo de linhas por arquivo.
+
+    sgrep "git" 50
+
+### **killByName**
+
+O último script tem como motivação o sistema travando. Com quem nunca aconteceu de estar usando o app e algum programa travar? Neste cenário, quando algum terminal ainda funciona, é possível utilizá-lo para encerrar o programa que está travado. Por exemplo, se acontecer com a steam:
+
+    ps -aux | grep steam 
+
+Isso irá listar todos os processos que tem steam no nome. Para encerrá-lo, deve-se utilizar o comando: 
+    
+    kill -9 numero_do_processo
+
+Porém pode haver vários processos com o nome steam (no caso esta function irá encerrar todos). Para isso, utilize:
+
+    killByName steam
+
+## **Retirando o arquivo carlitos_rc:**
+
+Não gostei desse arquivo, como faço pra tirá-lo do meu computador.
+
+    rm -rf ~/.carlitos_rc
+
+
+## **Conclusão:**
+
+Neste tutorial aprendemos como configurar um arquivo próprio de shell, sem alterar o arquivo que vem com o sistema, deixando suas configurações separadas de modo a ser mais facilmente copiado para outro computador.
+
+Este arquivo é bastante útil pra mim e por isso resolvi compartilhar. Espero que seja útil pra você também. Leia com bastante atenção este README e a documentação no próprio arquivo e faça testes pequenos. Eu não me responsabilizo por mau uso desses scripts.
