@@ -18,8 +18,8 @@ alias server='generic_grep_ip && python3 -m http.server'
 ################################## ctrl S to revert ctrl R #####################################
 [[ $- == *i* ]] && stty -ixon
 
-# ###################################### Git nome branch #########################################
-# # Show Branches in Git
+# ###################################### Git branch name #########################################
+# # Shows Branch name on shell
 function git_nome_branch () {
 	git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
 }
@@ -37,7 +37,7 @@ function change_PS1(){
 change_PS1
 
 ######################################### split_grep ################################################
-# Find words inside files and spit the result in files of a number of lines.
+# Finds a word inside files and spit the result in files with a certain number of lines.
 # Example: split_grep "git" 50.
 # Parameters:
 # 1) The word to look for
@@ -56,7 +56,7 @@ function split_grep () {
     echo Grep finalizado com sucesso! Verifique a pasta $folder
 }
 
-########################## Kills any process whose name contains a text #############################
+########################## Kills any process which name contains the specified text #############################
 function kill_by_name() {
     case "$OSTYPE" in
         darwin*) ps -ef | grep $1 | awk '{print $2}' | xargs kill -9 ;;
