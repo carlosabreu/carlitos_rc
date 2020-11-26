@@ -11,41 +11,48 @@ Para saber qual o shell no seu computador, utilize o comando:
 
     echo $SHELL
 
-## **Como utilizar?**
+## **Como configurar?**
 
-Passo 1: Copiar o arquivo.
+Passo 1: Copiar o arquivo
 
-Curl:
+A primeira coisa a fazer é copiar o arquivo .carlitos_rc deste projeto para a sua home (~). Podemos fazer isso de várias maneiras e aqui vão 3:
 
-    curl https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc --output ~/.carlitos_rc
+1) Curl:
+```
+curl https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc --output ~/.carlitos_rc
+```
 
-Wget:
+2) Wget:
+```
+wget -O ~/.carlitos_rc https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc
+```
 
-    wget -O ~/.carlitos_rc https://raw.githubusercontent.com/carlosabreu/carlitos_rc/main/src/.carlitos_rc
+3) Clonar o repositório e copiar o arquivo:
+```
+1) Abra um terminal e entre na pasta que você deseja ter o repositório.
+2) Clone o repositório: git clone https://github.com/carlosabreu/carlitos_rc.git
+3) Entre na pasta: cd carlitos_rc
+4) Copie o arquivo src/.carlitos_rc para a sua pasta home (representada por ~): cp src/.carlitos_rc ~  
+```
 
-Clonar o repositório e copiar o arquivo:
+Passo 2: Chamada
 
-    1) Abra um terminal e entre na pasta que você deseja ter o repositório.
-    2) Clone o repositório: git clone https://github.com/carlosabreu/carlitos_rc.git
-    3) Entre na pasta: cd carlitos_rc
-    4) Copie o arquivo src/.carlitos_rc para a sua pasta home (representada por ~): cp src/.carlitos_rc ~  
-
-Passo 2: Adicionar a chamada ao arquivo carlitos_rc no seu arquivo de configuração do shell:
+O próximo passo, consiste em adicionar a chamada para arquivo carlitos_rc no seu arquivo de configuração do shell:
     
-    MAC:
-    ```
-    echo "\n\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
-    ``` 
+MAC:
+```
+echo "\n\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
+```
 
-    LINUX: 
-    ```
-    echo -e "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.bashrc
-    ```
+LINUX: 
+```
+echo -e "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.bashrc
+```
 
 
 Pronto, quando abrir um novo terminal ou uma nova aba, este utilizará estas novas configurações.
 
-## **Em que esse arquivo ajuda minha vida?**
+## **Como utilizar?**
 
 ### **Python server**
 Normalmente, o mac e o linux já vem com o python instalado. No python 3 para subir um servidor compartilhando determinados arquivos de uma pasta basta rodar um único comando:
