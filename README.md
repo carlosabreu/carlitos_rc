@@ -39,12 +39,12 @@ Passo 2: Chamada
 
 O próximo passo, consiste em adicionar a chamada para arquivo carlitos_rc no seu arquivo de configuração do shell:
     
-MAC:
+<b>MAC:</b>
 ```
 echo "\n\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.zshrc
 ```
 
-LINUX: 
+<b>LINUX:</b> 
 ```
 echo -e "\nif [ -f ~/.carlitos_rc ]; then\n     . ~/.carlitos_rc\nfi" >> ~/.bashrc
 ```
