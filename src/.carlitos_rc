@@ -55,3 +55,11 @@ function split_grep () {
     cd - > /dev/null
     echo Grep finalizado com sucesso! Verifique a pasta $folder
 }
+
+########################## Kills any process which name contains the specified text #############################
+function kill_by_name() {
+    case "$OSTYPE" in
+        darwin*) ps -ef | grep $1 | awk '{print $2}' | xargs kill -9 ;;
+        linux*)  ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9 ;;
+    esac
+}

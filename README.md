@@ -87,6 +87,14 @@ O comando grep é um excelente comando para realizar buscas em pastas e em arqui
 
     split_grep "git" 50
 
+### **kill_by_name**
+
+O último script tem como motivação o sistema travando. Com quem nunca aconteceu de estar usando o computador e algum programa travar? Neste cenário, quando algum terminal ainda funciona, é possível utilizá-lo para encerrar o programa que está travado. Por exemplo, se acontecer com a steam: ps -aux | grep steam. Isso irá listar todos os processos que tem steam no nome. Para encerrá-lo, deve-se utilizar o comando: kill -9 numero_do_processo.
+
+Porém pode haver vários processos com o nome steam (cuidado, esta esta função irá encerrar todos eles). Para isso, utilize:
+
+    kill_by_name steam
+
 ## **Instalei não gostei, como faço pra tirá-lo do meu computador?**
 
 Que pena que não deu certo. Para remover, basta apagar o arquivo. 
