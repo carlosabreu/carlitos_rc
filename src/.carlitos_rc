@@ -1,17 +1,17 @@
 ###################################### Python server ############################################
 function generic_grep_ip() {
-    	case "$OSTYPE" in
-	        darwin*) grep_ip 2 ;;
-	        linux*)  grep_ip 10 ;;
-	    esac
+    case "$OSTYPE" in
+    darwin*) grep_ip 2 ;;
+    linux*) grep_ip 10 ;;
+    esac
 }
 
 function grep_ip() {
-	i=1
-	ifconfig | grep broadcast | cut -d" " -f$1 | while read -r line; do
-	echo -e IP $i: "\033[0;36m http://$line:8000\033[0m"
-	let i=i+1;
-	done
+    i=1
+    ifconfig | grep broadcast | cut -d" " -f$1 | while read -r line; do
+        echo -e IP $i: "\033[0;36m http://$line:8000\033[0m"
+        let i=i+1
+    done
 }
 
 alias server='generic_grep_ip && python3 -m http.server'
@@ -20,17 +20,20 @@ alias server='generic_grep_ip && python3 -m http.server'
 
 # ###################################### Git branch name #########################################
 # # Shows Branch name on shell
-function git_nome_branch () {
-	git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
+function git_nome_branch() {
+    git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
 }
 
-function change_PS1(){
-    case "$OSTYPE" in
-        darwin*)    setopt PROMPT_SUBST
-                    autoload -U colors && colors
-                    PS1=$'%{$fg[green]%}%n@%m:%{$fg[blue]%}%~%{$fg[red]%}$(git_nome_branch)%{$fg[green]%}$ %{$reset_color%}%' ;;
+function change_PS1() {
+    shell=$(echo "$SHELL")
+    case "$shell" in
+    /bin/zsh*)
+        setopt PROMPT_SUBST
+        autoload -U colors && colors
+        PS1=$'%{$fg[green]%}%n@%m:%{$fg[blue]%}%~%{$fg[red]%}$(git_nome_branch)%{$fg[green]%}$ %{$reset_color%}%'
+        ;;
 
-        linux*)     PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ " ;;
+    /bin/bash*) PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_nome_branch)\[\033[m\]$ " ;;
     esac
 }
 
@@ -43,23 +46,23 @@ change_PS1
 # 1) The word to look for
 # 2) The maximum of lines on the result files.
 
-function split_grep () {
+function split_grep() {
     tempFile=xptoTmp.txt
     folder=~/Downloads/grepResult
     rm -rf $folder
     mkdir -p $folder
-    grep -Inri $1 > $folder/$tempFile .
+    grep -Inri $1 . >$folder/$tempFile
     cd $folder
     split -l $2 $tempFile
     rm -rf $tempFile
-    cd - > /dev/null
+    cd - >/dev/null
     echo Grep finalizado com sucesso! Verifique a pasta $folder
 }
 
 ########################## Kills any process which name contains the specified text #############################
 function kill_by_name() {
     case "$OSTYPE" in
-        darwin*) ps -ef | grep $1 | awk '{print $2}' | xargs kill -9 ;;
-        linux*)  ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9 ;;
+    darwin*) ps -ef | grep $1 | awk '{print $2}' | xargs kill -9 ;;
+    linux*) ps -ef | grep $1 | awk '{print $2}' | xargs -r kill -9 ;;
     esac
 }
